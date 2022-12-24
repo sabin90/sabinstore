@@ -1,0 +1,175 @@
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        h1{
+            text-align: right;
+        }
+        *{
+            background-color: rgb(86, 208, 167);
+            padding: 0px;
+         
+        }
+        legend{
+            margin:0px  ;
+            padding: -10px;
+            background-color: rgb(194, 234, 234);
+        }
+        h2{
+            background-color: rgb(65, 121, 212);
+        }
+        d{
+            background-color: rgb(192, 165, 217);
+        }
+        .container{
+            padding: 0px;
+            height: max-content;
+        }
+       
+
+        
+    </style>
+</head>
+<body>
+    
+    <h2><marquee  direction="left-right"><d>Sabin Store</d></marquee> <a href="billing.html"></a></h2>
+<div class="container-fluid">
+    <div class="container">
+        <div class="part1">
+            <fieldset>
+                <legend>Personal Information</legend>
+                Full Name: <br><input type="text" id="name"> <br/>
+                Phone Number <br> <input type="number" id="email" required ><br>
+                address:  <br><input type="text" id="address" required>
+            </fieldset>
+        </div>
+
+
+        <div class="part2">
+            <fieldset>
+                <legend>Your Orders</legend>
+                Munch     (Rs. 10): <input type="text" id="munch"> <br/>
+                Beli   (Rs. 20): <input type="text" id="Beli"><br/>
+                GoodDay  (Rs. 10): <input type="text" id="GoodDay"><br/>
+                chatpatey (Rs. 25): <input type="text" id="chatpatey"><br/>
+            </fieldset>
+        </div>
+        
+    </div>
+
+    <div class="container">
+        <fieldset>
+            <legend><h1>Sabin's Store</h1></legend>
+            <h3>Your Name:<span id="name2"></span></h3>
+            <h3>Phone number: <span id="email2"></span></h3>
+            <h3>address: <span id="address2"></span></h3>
+            <table border="1" >
+                <thead>
+                    <tr><th>Menu</th><th>Price</th><th>Quantity</th><th>Amout</th></tr>
+                </thead>
+                <tbody id="bill">
+                    <!-- <tr><td>munch</td><td>Rs. 10</td><td>1</td><td>10x1 = 10</td></tr> -->
+                </tbody>
+
+                
+
+            </table>
+            </fieldset>
+            <h1>Total Amout: Rs. <span id="amount">0</span></h1>
+            
+    </div>
+</div>
+<script>
+var munch = 10, Beli = 10, GoodDay = 10, chatpatey = 25 , beli=10;
+var munch_q=0, Beli_q=0, GoodDay_q=0,chatpatey_q=0;
+var name = "", email="", address=""
+var munchBill="",Beli="",GoodDayBill="",chatpateyBill="";
+var total_amount=0;
+document.getElementById("name").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("name2").innerHTML=this.value;
+});
+
+document.getElementById("email").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("email2").innerHTML=this.value;
+});
+
+
+document.getElementById("address").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("address2").innerHTML=this.value;
+});
+
+
+
+document.getElementById("munch").addEventListener("keyup",function(){
+if(this.value==""||this.value==0){
+    munchBill="";
+   munch_q=0;
+    showBill();
+}else{
+    munch_q=this.value;
+    munchBill="<tr><td>munch</td><td>Rs. "+munch+"</td><td>"+munch_q+"</td><td>"+munch+"x"+munch_q+" = "+munch*munch_q+"</td></tr>";
+    showBill();
+
+}
+});
+
+document.getElementById("Beli").addEventListener("keyup",function(){
+if(this.value==""||this.value==0){
+    BeliBill="";
+   Beli_q=0;
+    showBill();
+}else{
+    Beli_q=this.value;
+    BeliBill="<tr><td>Beli</td><td>Rs. "+Beli+ "</td><td>"+Beli_q+"</td><td>"+Beli+"x"+Beli_q+" = "+Beli*Beli_q+"</td></tr>";
+    showBill();
+
+}
+});
+
+
+
+document.getElementById("GoodDay").addEventListener("keyup",function(){
+if(this.value==""||this.value==0){
+    GoodDayBill="";
+    GoodDay_q=0;
+    showBill();
+
+}else{
+    GoodDay_q=this.value;
+    GoodDayBill="<tr><td>GoodDay</td><td>Rs. "+GoodDay+"</td><td>"+GoodDay_q+"</td><td>"+GoodDay+"x"+GoodDay_q+" = "+GoodDay*GoodDay_q+"</td></tr>";
+    showBill();
+}
+});
+
+document.getElementById("chatpatey").addEventListener("keyup",function(){
+if(this.value==""||this.value==0){
+    chatpateyBill="";
+    chatpatey_q=0;
+    showBill();
+
+}else{
+    chatpatey_q=this.value;
+    chatpateyBill="<tr><td>chatpatey</td><td>Rs. "+chatpatey+"</td><td>"+chatpatey_q+"</td><td>"+chatpatey+"x"+chatpatey_q+" = "+chatpatey*chatpatey_q+"</td></tr>";
+    showBill();
+}
+});
+
+
+function showBill(){
+    document.getElementById("bill").innerHTML=munchBill+BeliBill+GoodDayBill+chatpateyBill; //table statement
+    document.getElementById("amount").innerHTML = munch*munch_q+Beli*Beli_q+GoodDay*GoodDay_q+chatpatey*chatpatey_q; // total amount
+}
+</script>
+</body>
+</html>
